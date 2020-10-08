@@ -1,4 +1,4 @@
-# store-app
+# Queen Spades
 
 Queen spades商城 app端
 
@@ -18,6 +18,3 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
-
-
-# queen-spades
