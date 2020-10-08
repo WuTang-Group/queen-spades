@@ -1,6 +1,6 @@
 <template>
   <div class="header-con" :class="overState?'sliding-nav-open':''">
-    <header class="header js-header nav-scroll-header">
+    <header class="header js-header">
       <div class="header__nav-wrapper">
         <div class="header__nav-item" @click="toggleNav">
           <span class="nav-icon" :class="navigatState?'icon-cross':''"></span>

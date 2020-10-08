@@ -948,7 +948,7 @@ h2.title-lg {
 ==========================*/
 header {
   background-color: #fff;
-  border-bottom: 1px solid #dddddd;
+  /* border-bottom: 1px solid #dddddd; */
   position: fixed;
   width: 100%;
   z-index: 9999;

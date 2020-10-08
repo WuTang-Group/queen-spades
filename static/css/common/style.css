@@ -9001,13 +9001,15 @@ body[data-aos-easing="ease-in-out-quart"] [data-aos] {
   font-size: 29px;
   font-size: 0.9rem;
   color: #fff;
+  font-family: logo !important;
+  font-weight: bold;
   transition: font-size 0.2s cubic-bezier(0.1, 0.49, 0.5, 1.05);
 }
 
 @media screen and (min-width: 85.375rem) {
   .header__logo {
-    font-size: 40px;
-    font-size: 2.5rem;
+    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
@@ -9333,7 +9335,7 @@ header.nav-scroll-header .header__logo {
 @media screen and (min-width: 85.375rem) {
   .navigation {
     transform: translateY(-150vh);
-    max-width: 1920px;
+    max-width: 100%;
     height: auto;
   }
 }
@@ -27978,7 +27980,7 @@ nav .icon-logo {
 
 @media screen and (min-width: 64rem) {
   .tiles-group.discover-tiles .discover-tile:hover .discover-tile__img {
-    transform: scale(1.25);
+    transform: scale(1.05);
   }
 }
 
