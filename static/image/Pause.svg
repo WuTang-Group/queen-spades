@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54 (76480) - https://sketchapp.com -->
+    <title>Pause</title>
+    <desc>Created with Sketch.</desc>
+    <g id="About-us" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-15" fill-rule="nonzero">
+            <g id="pause" transform="translate(2.000000, 2.000000)">
+                <path d="M12.359375,7.9296875 L10.171875,7.9296875 L10.171875,19.9609375 L12.359375,19.9609375 L12.359375,7.9296875 Z M17.828125,7.9296875 L15.640625,7.9296875 L15.640625,19.9609375 L17.828125,19.9609375 L17.828125,7.9296875 Z" id="Shape" fill="#FFFFFF"></path>
+                <path d="M14,28 C10.2605286,28 6.74472045,26.5437317 4.1004944,23.8995056 C1.4562683,21.2552796 0,17.7394714 0,14 C0,10.2605286 1.4562683,6.74472045 4.1004944,4.1004944 C6.74472045,1.4562683 10.2605286,0 14,0 C17.7394714,0 21.2552796,1.4562683 23.8995056,4.1004944 C26.5437317,6.74472045 28,10.2605286 28,14 C28,17.7394714 26.5437317,21.2552796 23.8995056,23.8995056 C21.2552796,26.5437317 17.7394714,28 14,28 Z" id="Path" stroke="#FFFFFF" stroke-width="0.875"></path>
+            </g>
+        </g>
+    </g>
+</svg>
