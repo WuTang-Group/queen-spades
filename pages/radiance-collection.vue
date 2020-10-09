@@ -450,6 +450,13 @@ h1,
   margin-top: 10px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 1024px) {
+  .add-wish-custom {
+    margin-top: -20px;
+  }
+}
+
 @media only screen and(max-width: 1024px) {
   .hero-componet_btn {
     margin-bottom: 30px;
