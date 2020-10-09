@@ -77,7 +77,8 @@ import Footer from "../components/Footer";
 import { getWishList, deleteWish } from "~/api/wish";
 import { saveWishToCart } from "~/api/cart";
 import { formatMoney } from '@/filter'
-import { mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
+import { getShoppingCartData, addShoppingCart } from "~/api/cart";
 
 let defaultListQuery = {
   page: 1,
@@ -121,7 +122,8 @@ export default {
   mounted () { },
   methods: {
     ...mapMutations({
-      setWishInfo: "SET_WISH_INFO"
+      setWishInfo: "SET_WISH_INFO",
+      setCartInfo: 'SET_CART_INFO'
     }),
     // 获取wishlist
     getList(){
@@ -162,47 +164,6 @@ export default {
       })
     },
 
-    // 计算分页相关数据
-    caculatePaginationData(){
-      // 计算分页总页数
-      this.pageTotal = Math.ceil(this.listTotal / this.listQuery.page_limit)
-    },
-
-    // 跳转详情页面
-    switchProductInfo(slug) {
-      this.$router.push(`/rapid-response-booster?slug=${slug}`)
-    },
-
-    // 添加到购物车
-    addToCart(id){
-      const that = this
-      const params = {
-        product_list: [{
-          product_id: id
-        }]
-      }
-      
-      saveWishToCart(params).then(({data})=>{
-        if(data.code === 20001) {
-          that.$message({
-            message: '添加购物车成功',
-            type: 'success'
-          })
-        }else if(data.code === 10001) {
-          that.$message({
-            message: '此商品已在您购物车',
-            type: 'error'
-          })
-        }
-
-      }).catch(err => {
-        that.$message({
-          message: '添加购物车失败',
-          type: 'error'
-        });
-      })
-    },
-    
     // 删除心愿单
     deleteWishFromList(id){
       const that = this
@@ -226,6 +187,65 @@ export default {
           type: 'error'
         });
       })
+    },
+
+    // 获取购物车信息，添加到全局状态中
+    getShoppingCart() {
+      const that = this
+      getShoppingCartData().then(res => {
+        if (res.data.code === 20001) {
+          that.setCartInfo(res.data.data)
+        } else {
+          that.$message({
+            message: res.data.msg,
+            type: 'error'
+          });
+        }
+      })
+      .catch(e => {
+        console.log('获取购物车列表失败: error ', e)
+      });
+    },
+
+    // 添加到购物车
+    addToCart(id){
+      const that = this
+      const params = {
+        product_list: [{
+          product_id: id
+        }]
+      }
+      
+      saveWishToCart(params).then(({data})=>{
+        if(data.code === 20001) {
+          that.getShoppingCart();
+          that.$message({
+            message: '添加购物车成功',
+            type: 'success'
+          })
+        } else {
+          that.$message({
+            message: data.msg,
+            type: 'error'
+          });
+        }
+      }).catch(err => {
+        that.$message({
+          message: '添加购物车失败',
+          type: 'error'
+        });
+      })
+    },
+
+    // 计算分页相关数据
+    caculatePaginationData(){
+      // 计算分页总页数
+      this.pageTotal = Math.ceil(this.listTotal / this.listQuery.page_limit)
+    },
+
+    // 跳转详情页面
+    switchProductInfo(slug) {
+      this.$router.push(`/rapid-response-booster?slug=${slug}`)
     },
 
     // 切换前一页
