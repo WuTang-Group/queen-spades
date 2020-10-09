@@ -24,7 +24,13 @@
                 <button type="button"
                         value="添加至购物车"
                         class="button-fancy-large add-to-cart button--secondary hero-componet_btn"
-                        @click="addToCart(bannerInfo)">添加至购物车</button>
+                        @click="addToCart(bannerInfo)">
+                          添加至购物车
+                </button>
+                <div class="wishlist__pdp-text js-wishlist-not-added wishlist__pdp-text--not-added add-wish-custom">
+                  <span class="wishlist__pdp-star"></span>
+                  <span class="wishlist__pdp-add-text" @click="handleAddToWishlist(bannerInfo)">添加愿望清单</span>
+                </div>
               </div>
             </div>
           </div>
@@ -189,6 +195,7 @@ import axios from "~/plugins/axios";
 import { loadingTips, removeLoading } from '../util/util';
 import { mapState, mapMutations } from 'vuex'
 import { getShoppingCartData, addShoppingCart } from "~/api/cart";
+import { getWishList, addToWishlist } from "~/api/wish";
 export default {
   components: { Header, Footer },
   data () {
@@ -219,6 +226,7 @@ export default {
   methods: {
     ...mapMutations({
       setCartInfo: 'SET_CART_INFO',
+      setWishInfo: 'SET_WISH_INFO',
       setNavigatState: "SET_NAVIGAT_STATE",
       setOverState: "SET_OVER_STATE"
     }),
@@ -273,6 +281,71 @@ export default {
         } else {
           that.$message({
             message: res.data.msg,
+            type: 'error'
+          });
+        }
+      })
+      .catch(e => {
+        if (e.response.status == 401) {
+          that.$message({
+            message: '请先登录',
+            type: 'error'
+          });
+        } else {
+          that.$message({
+            message: '页面异常，请稍后刷新再试',
+            type: 'error'
+          });
+        }
+      })
+    },
+
+    // 获取心愿单列表
+    getTotalWish() {
+      const that = this
+      getWishList().then(res => {
+        if (res.data.code === 20001) {
+          that.setWishInfo(res.data.data)
+        } else {
+          that.$message({
+            message: res.data.msg,
+            type: 'error'
+          });
+        }
+      })
+      .catch(e => {
+        if (e.response.status === 401) {
+          that.$message({
+            message: "请先登录",
+            type: 'error'
+          });
+        } else {
+          that.$message({
+            message: '页面异常，请稍后刷新再试',
+            type: 'error'
+          });
+        }
+      });
+    },
+
+    // 添加愿望清单
+    handleAddToWishlist(productInfo){
+      const that = this
+      console.log(productInfo)
+      const params = {
+        product_id: productInfo.id
+      }
+      addToWishlist(params).then(res => {
+        const { code, msg } = res.data;
+        if (code === 20001) {
+          that.getTotalWish();
+          that.$message({
+            message: "成功添加到心愿单",
+            type: 'success'
+          });
+        } else {
+          that.$message({
+            message: msg,
             type: 'error'
           });
         }
@@ -372,6 +445,10 @@ h1,
 }
 /deep/.exploreothercollections__container h3{
   color: #fff;
+}
+.add-wish-custom {
+  margin-top: 10px;
+  cursor: pointer;
 }
 @media only screen and(max-width: 1024px) {
   .hero-componet_btn {
