@@ -5342,7 +5342,8 @@
     68: [
         function (e, t, n) {
             function i() {
-                o.length && (o.length && (o.offset().top > s ? o.addClass("scroll-header") : o.removeClass("scroll-header")), a.setCookieMsgPosition())
+                o.length && (o.length && (o.offset().top > s ? o.addClass("scroll-header") : o.removeClass("scroll-header")), a.setCookieMsgPosition());
+                o.offset().top > s ? sHeader.addClass("scroll-secondary-header") : sHeader.removeClass("scroll-secondary-header");
             }
 
             function r() {
@@ -5352,6 +5353,7 @@
             }
             var a = e("./../cookiemessage"),
                 o = $(".js-header"),
+                sHeader = $(".js-secondary-header"),
                 s = $(".usp-banner-wrapper").length ? $(".usp-banner-wrapper").outerHeight() : 0;
             t.exports = {
                 init: r
