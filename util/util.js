@@ -165,20 +165,6 @@ export async function getShoppingCartData () {
         });
         listData = "error"
       }
-    })
-    .catch(e => {
-      if (e.response.status === 401) {
-        Vue.prototype.$message({
-          message: "请先登录",
-          type: 'error'
-        });
-      } else {
-        Vue.prototype.$message({
-          message: '页面异常，请稍后刷新再试',
-          type: 'error'
-        });
-      }
-      listData = "error"
     });
   return listData
 }
@@ -201,19 +187,5 @@ export async function delShoppingCart (product_id) {
         state = false
       }
     })
-    .catch(e => {
-      if (e.response.status == 401) {
-        Vue.prototype.$message({
-          message: '请先登录',
-          type: 'error'
-        });
-      } else {
-        Vue.prototype.$message({
-          message: '页面异常，请稍后刷新再试',
-          type: 'error'
-        });
-      }
-      state = false
-    });
   return state
 }

@@ -159,18 +159,6 @@ export default {
             type: 'error'
           });
         }
-      }).catch(e => {
-        if (e.response.status === 401) {
-          this.$message({
-            message: "请先登录",
-            type: 'error'
-          });
-        } else {
-          this.$message({
-            message: '页面异常，请稍后刷新再试',
-            type: 'error'
-          });
-        }
       })
     },
     delCarData: function(product_id) {
@@ -193,18 +181,6 @@ export default {
         } else {
           that.$message({
             message: res.data.msg,
-            type: 'error'
-          })
-        }
-      }).catch(e => {
-        if (e.response.status == 401) {
-          that.$message({
-            message: '请先登录',
-            type: 'error'
-          });
-        } else {
-          that.$message({
-            message: '页面异常，请稍后刷新再试',
             type: 'error'
           })
         }

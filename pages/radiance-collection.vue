@@ -243,19 +243,6 @@ export default {
             type: 'error'
           });
         }
-      })
-      .catch(e => {
-        if (e.response.status === 401) {
-          that.$message({
-            message: "请先登录",
-            type: 'error'
-          });
-        } else {
-          that.$message({
-            message: '页面异常，请稍后刷新再试',
-            type: 'error'
-          });
-        }
       });
     },
 
@@ -285,19 +272,6 @@ export default {
           });
         }
       })
-      .catch(e => {
-        if (e.response.status == 401) {
-          that.$message({
-            message: '请先登录',
-            type: 'error'
-          });
-        } else {
-          that.$message({
-            message: '页面异常，请稍后刷新再试',
-            type: 'error'
-          });
-        }
-      })
     },
 
     // 获取心愿单列表
@@ -309,19 +283,6 @@ export default {
         } else {
           that.$message({
             message: res.data.msg,
-            type: 'error'
-          });
-        }
-      })
-      .catch(e => {
-        if (e.response.status === 401) {
-          that.$message({
-            message: "请先登录",
-            type: 'error'
-          });
-        } else {
-          that.$message({
-            message: '页面异常，请稍后刷新再试',
             type: 'error'
           });
         }
@@ -346,19 +307,6 @@ export default {
         } else {
           that.$message({
             message: msg,
-            type: 'error'
-          });
-        }
-      })
-      .catch(e => {
-        if (e.response.status == 401) {
-          that.$message({
-            message: '请先登录',
-            type: 'error'
-          });
-        } else {
-          that.$message({
-            message: '页面异常，请稍后刷新再试',
             type: 'error'
           });
         }

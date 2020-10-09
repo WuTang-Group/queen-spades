@@ -530,19 +530,6 @@ export default {
             type: 'error'
           });
         }
-      })
-      .catch(e => {
-        if (e.response.status === 401) {
-          this.$message({
-            message: "请先登录",
-            type: 'error'
-          });
-        } else {
-          this.$message({
-            message: '页面异常，请稍后刷新再试',
-            type: 'error'
-          });
-        }
       });
     },
     addToCart:function() {
@@ -568,19 +555,6 @@ export default {
             type: 'error'
           });
         }
-      })
-      .catch(e => {
-        if (e.response.status == 401) {
-          this.$message({
-            message: '请先登录',
-            type: 'error'
-          });
-        } else {
-          this.$message({
-            message: '页面异常，请稍后刷新再试',
-            type: 'error'
-          });
-        }
       });
     },
     getTotalWish() {
@@ -591,19 +565,6 @@ export default {
         } else {
           this.$message({
             message: res.data.msg,
-            type: 'error'
-          });
-        }
-      })
-      .catch(e => {
-        if (e.response.status === 401) {
-          this.$message({
-            message: "请先登录",
-            type: 'error'
-          });
-        } else {
-          this.$message({
-            message: '页面异常，请稍后刷新再试',
             type: 'error'
           });
         }
@@ -630,19 +591,6 @@ export default {
         } else {
           this.$message({
             message: msg,
-            type: 'error'
-          });
-        }
-      })
-      .catch(e => {
-        if (e.response.status == 401) {
-          this.$message({
-            message: '请先登录',
-            type: 'error'
-          });
-        } else {
-          this.$message({
-            message: '页面异常，请稍后刷新再试',
             type: 'error'
           });
         }

@@ -822,6 +822,9 @@ export default {
         })
     },
     getWishData(){
+      if(!this.loginState){
+        return;
+      }
       const that = this
       getWishList({
         page: 1,
